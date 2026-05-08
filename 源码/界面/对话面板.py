@@ -34,8 +34,11 @@ class UI对话面板(RichLog):
             auto_scroll=True,    # 自动滚动到底部
             wrap=True,           # 自动换行
             highlight=True,      # 语法高亮（Markdown 中的代码）
+            min_width=40,        # 最小宽度（列），防止被挤压到很窄
             **kwargs,
         )
+        # 流式输出缓冲区：避免每个微小 chunk 单独 write() 独立成行
+        self._流式缓冲区: str = ""
 
     # ── 消息显示方法 ───────────────────────────────────
 
@@ -76,12 +79,28 @@ class UI对话面板(RichLog):
 
     def 显示流式文本(self, 内容: str):
         """
-        追加 AI 流式输出的文本（不换行，持续追加）。
+        追加 AI 流式输出的文本（累积到缓冲区，达到阈值才写入）。
+
+        避免每个微小 chunk 单独 write() 导致 RichLog 独立成行，
+        从而解决中文每两三个字就换行的问题。
 
         参数：
             内容: 流式输出的文本块
         """
-        self.write(内容)
+        if not hasattr(self, '_流式缓冲区'):
+            self._流式缓冲区 = ""
+        self._流式缓冲区 += 内容
+        # 遇到换行符 或 缓冲区积累超过 60 个字符时，一次性写入
+        if '\n' in self._流式缓冲区 or len(self._流式缓冲区) >= 60:
+            待写入 = self._流式缓冲区
+            self._流式缓冲区 = ""
+            self.write(待写入)
+
+    def 刷新流式缓冲(self):
+        """将流式缓冲区中剩余内容写入面板（对话完成时调用）。"""
+        if hasattr(self, '_流式缓冲区') and self._流式缓冲区:
+            self.write(self._流式缓冲区)
+            self._流式缓冲区 = ""
 
     def 显示工具消息(self, 工具名: str, 参数: str = "", 结果: str = ""):
         """

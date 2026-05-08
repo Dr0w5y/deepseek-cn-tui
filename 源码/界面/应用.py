@@ -108,7 +108,7 @@ class UI智能鲸鱼应用(App):
             yield 文件面板(self.工作目录, id="file-panel")
 
             # 右侧对话+输入区（垂直布局）
-            with Vertical():
+            with Vertical(id="chat-area"):
                 yield 对话面板(id="chat-panel")
                 yield 输入框(id="input-area")
 
@@ -268,6 +268,7 @@ class UI智能鲸鱼应用(App):
         """（主线程）对话完成后的收尾工作"""
         try:
             对话 = self.query_one("#chat-panel", 对话面板)
+            对话.刷新流式缓冲()   # 将缓冲区残余文本写入面板
             对话.滚动到底部()
         except Exception:
             pass

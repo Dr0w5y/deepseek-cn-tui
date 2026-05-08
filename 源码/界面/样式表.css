@@ -86,9 +86,17 @@ ScrollBarCorner {
     text-style: bold;
 }
 
+/* ── 右侧对话+输入区容器 ─────────────────────────────── */
+
+#chat-area {
+    width: 1fr;
+}
+
 /* ── 对话面板 ────────────────────────────────────────── */
 
 #chat-panel {
+    width: 1fr;
+    min-width: 40;
     background: #24283b;
     border: solid #3b4261;
     overflow-y: auto;
