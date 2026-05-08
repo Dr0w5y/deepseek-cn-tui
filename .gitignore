@@ -11,3 +11,9 @@ venv/
 Thumbs.db 
 .vscode/ 
 .idea/ 
+*_t.txt 
+*_test_write.txt 
+_*.py 
+verify.py 
+tokenizer_source.txt 
+按任意键关闭窗口 

@@ -1,0 +1,292 @@
+/*
+ * 智能鲸鱼 — 终端界面样式表
+ * 深色主题配色
+ * ============================================================
+ */
+
+/* ── 全局 ──────────────────────────────────────────────── */
+
+Screen {
+    background: #1a1b26;
+    color: #c0caf5;
+    scrollbar-color: #565f89;
+    scrollbar-size-vertical: 8;
+    scrollbar-size-horizontal: 0;
+}
+
+/* 滚动条美化 */
+ScrollBar {
+    background: transparent;
+}
+
+ScrollBar:hover {
+    background: #565f8933;
+}
+
+ScrollBarCorner {
+    background: transparent;
+}
+
+/* ── 顶部状态栏 ──────────────────────────────────────── */
+
+#status-bar {
+    height: 1;
+    background: #16171d;
+    color: #9ece6a;
+    padding: 0 2;
+    text-style: bold;
+}
+
+#status-bar .session-title {
+    color: #7aa2f7;
+}
+
+#status-bar .token-count {
+    color: #e0af68;
+}
+
+/* ── 左侧文件面板 ────────────────────────────────────── */
+
+#file-panel {
+    width: 30;
+    background: #1f2335;
+    border: solid #3b4261;
+    border-title-color: #7aa2f7;
+    border-title-background: #1f2335;
+    border-title-style: bold;
+}
+
+#file-panel DirectoryTree {
+    background: #1f2335;
+    color: #a9b1d6;
+}
+
+/* 目录节点样式 */
+#file-panel DirectoryTree > .directory {
+    color: #7aa2f7;
+    text-style: bold;
+}
+
+/* 文件节点样式 */
+#file-panel DirectoryTree > .file {
+    color: #a9b1d6;
+}
+
+/* 选中高亮 */
+#file-panel DirectoryTree > .directory--highlighted,
+#file-panel DirectoryTree > .file--highlighted {
+    background: #2f3340;
+    color: #c0caf5;
+}
+
+#file-panel DirectoryTree > .directory--selected,
+#file-panel DirectoryTree > .file--selected {
+    background: #3b4261;
+    color: #7aa2f7;
+    text-style: bold;
+}
+
+/* ── 对话面板 ────────────────────────────────────────── */
+
+#chat-panel {
+    background: #24283b;
+    border: solid #3b4261;
+    overflow-y: auto;
+}
+
+/* 对话面板内部滚动条 */
+#chat-panel RichLog {
+    background: transparent;
+    scrollbar-color: #565f89;
+}
+
+/* ── 用户消息气泡 ────────────────────────────────────── */
+
+.user-message {
+    color: #c0caf5;
+    background: #1f2335;
+    margin: 1 2;
+    padding: 1 2;
+    border-left: solid #7aa2f7;
+}
+
+.user-message .message-header {
+    color: #7aa2f7;
+    text-style: bold;
+}
+
+/* ── AI 消息气泡 ─────────────────────────────────────── */
+
+.ai-message {
+    color: #a9b1d6;
+    background: #2f3340;
+    margin: 1 2;
+    padding: 1 2;
+    border-left: solid #9ece6a;
+}
+
+.ai-message .message-header {
+    color: #9ece6a;
+    text-style: bold;
+}
+
+/* ── 工具调用消息 ────────────────────────────────────── */
+
+.tool-message {
+    color: #e0af68;
+    background: #1a1b26;
+    margin: 0 4;
+    padding: 0 2;
+    border-left: solid #e0af68;
+    text-style: italic;
+}
+
+/* ── 系统消息 ────────────────────────────────────────── */
+
+.system-message {
+    color: #565f89;
+    text-style: italic;
+    text-align: center;
+    margin: 1 0;
+}
+
+/* ── Markdown 内容样式 ───────────────────────────────── */
+
+RichLog .code_block {
+    background: #1a1b26;
+    border: solid #3b4261;
+    margin: 1 0;
+    padding: 1 2;
+}
+
+RichLog .inline_code {
+    background: #2f3340;
+    color: #7dcfff;
+    padding: 0 1;
+}
+
+RichLog .bold {
+    text-style: bold;
+    color: #c0caf5;
+}
+
+RichLog .italic {
+    text-style: italic;
+    color: #a9b1d6;
+}
+
+RichLog .heading {
+    color: #7aa2f7;
+    text-style: bold;
+}
+
+RichLog .link {
+    color: #7dcfff;
+    text-style: underline;
+}
+
+/* ── 输入区域 ────────────────────────────────────────── */
+
+#input-area {
+    height: auto;
+    min-height: 3;
+    max-height: 10;
+    background: #1f2335;
+    border: solid #3b4261;
+    border-title-color: #7aa2f7;
+    border-title-background: #1f2335;
+    border-title-style: bold;
+    padding: 0 1;
+}
+
+#input-area TextArea {
+    background: #1f2335;
+    color: #c0caf5;
+    border: none;
+    padding: 0 1;
+}
+
+#input-area TextArea:focus {
+    border: none;
+}
+
+#input-area .input-hint {
+    color: #565f89;
+    text-style: italic;
+}
+
+/* 输入框占位符 */
+#input-area TextArea > .placeholder {
+    color: #565f89;
+}
+
+/* ── 底部快捷键提示 ──────────────────────────────────── */
+
+#shortcut-bar {
+    height: 1;
+    background: #16171d;
+    color: #565f89;
+    padding: 0 2;
+}
+
+#shortcut-bar .shortcut-key {
+    color: #7dcfff;
+    text-style: bold;
+}
+
+/* ── 帮助弹窗 ────────────────────────────────────────── */
+
+#help-popup {
+    background: #24283b;
+    border: solid #7aa2f7;
+    padding: 1 2;
+    width: 60;
+    height: 20;
+}
+
+#help-popup .popup-title {
+    color: #7aa2f7;
+    text-style: bold;
+    text-align: center;
+}
+
+/* ── 错误消息 ────────────────────────────────────────── */
+
+.error-text {
+    color: #f7768e;
+}
+
+.warning-text {
+    color: #e0af68;
+}
+
+.success-text {
+    color: #9ece6a;
+}
+
+/* ── 分隔线 ──────────────────────────────────────────── */
+
+.divider {
+    color: #3b4261;
+    height: 1;
+}
+
+/* ── 会话列表用（后续扩展） ──────────────────────────── */
+
+#session-list {
+    background: #1f2335;
+}
+
+#session-list ListItem {
+    color: #a9b1d6;
+    padding: 0 1;
+}
+
+#session-list ListItem:hover {
+    background: #2f3340;
+}
+
+#session-list ListItem > .highlight {
+    background: #3b4261;
+    color: #7aa2f7;
+}

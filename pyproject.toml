@@ -1,0 +1,80 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "deepseek-cn-tui"
+version = "0.1.0"
+description = "🐋 智能鲸鱼 — 终端里的中文编程 AI 搭子"
+authors = [
+    { name = "Dr0w5y" },
+]
+license = { text = "MIT" }
+readme = "说明.md"
+requires-python = ">=3.10"
+keywords = [
+    "deepseek",
+    "ai",
+    "assistant",
+    "terminal",
+    "tui",
+    "chinese",
+    "coding",
+    "agent",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Terminals",
+]
+
+# 核心依赖
+dependencies = [
+    "textual>=0.40.0",
+    "openai>=1.0.0",
+]
+
+# 扩展依赖
+[project.optional-dependencies]
+# Office 文档解析
+office = [
+    "python-docx>=0.8.11",
+    "openpyxl>=3.1.0",
+    "python-pptx>=0.6.21",
+]
+# 图片处理
+vision = [
+    "pillow>=10.0.0",
+]
+# 全部功能
+full = [
+    "python-docx>=0.8.11",
+    "openpyxl>=3.1.0",
+    "python-pptx>=0.6.21",
+    "pillow>=10.0.0",
+]
+
+# 命令行入口
+[project.scripts]
+deepseek-cn = "源码.主程序:main"
+deepseek-cn-tui = "源码.主程序:main"
+
+# 项目链接
+[project.urls]
+"主页" = "https://github.com/Dr0w5y/deepseek-cn-tui"
+"源码" = "https://github.com/Dr0w5y/deepseek-cn-tui"
+"问题追踪" = "https://github.com/Dr0w5y/deepseek-cn-tui/issues"
+
+# setuptools 包配置
+[tool.setuptools.packages.find]
+include = ["源码*"]
+exclude = ["测试*"]
